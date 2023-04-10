@@ -12,12 +12,15 @@ namespace BilForhandler.Model
      
         public Guid BilId { get; set; }
         public string Navn { get; set; }
-
         public string Mærke { get; set; }
         public string Model { get; set; }
-
         public int År { get; set; }
-
+        public virtual ICollection<Pris> Priser { get; set; } //navigationsegenskab
+        
+        [ForeignKey("Bruger")]
+        public Guid BrugerId { get; set; } // Foreign key
+        public virtual Bruger Bruger { get; set; } // Navigation property
+       
         public Bil() { }
         public Bil(string navn, string mærke, string model, int år)
         {

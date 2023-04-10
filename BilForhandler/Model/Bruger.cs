@@ -15,7 +15,7 @@ namespace BilForhandler.Model
         public string Mail { get; set; }
         
         public bool Medarbejder { get; set; }
-       
+        public virtual ICollection<Bil> Biler { get; set; } //navigationsegenksab
         public Bruger() { }
         public Bruger(string navn, string mail)
         {

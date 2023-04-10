@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,10 @@ namespace BilForhandler.Model
         public bool IndkøbsPris { get; set; }
 
         public bool SalgsPris { get; set; }
+
+        [ForeignKey("Bil")]
+        public Guid BilId { get; set; }
+        public virtual Bil Bil { get; set; }
 
         public Pris() { }
 

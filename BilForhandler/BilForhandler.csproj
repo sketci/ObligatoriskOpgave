@@ -85,6 +85,14 @@
     <Compile Include="Migrations\202304092159298_InitialMigration.designer.cs">
       <DependentUpon>202304092159298_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304100853132_nulTilMangePriserPåBil.cs" />
+    <Compile Include="Migrations\202304100853132_nulTilMangePriserPåBil.designer.cs">
+      <DependentUpon>202304100853132_nulTilMangePriserPåBil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304100907578_nulTilMangePåBrugerFraBil.cs" />
+    <Compile Include="Migrations\202304100907578_nulTilMangePåBrugerFraBil.designer.cs">
+      <DependentUpon>202304100907578_nulTilMangePåBrugerFraBil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Bil.cs" />
     <Compile Include="Model\Bruger.cs" />
@@ -104,6 +112,12 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202304092159298_InitialMigration.resx">
       <DependentUpon>202304092159298_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304100853132_nulTilMangePriserPåBil.resx">
+      <DependentUpon>202304100853132_nulTilMangePriserPåBil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304100907578_nulTilMangePåBrugerFraBil.resx">
+      <DependentUpon>202304100907578_nulTilMangePåBrugerFraBil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
