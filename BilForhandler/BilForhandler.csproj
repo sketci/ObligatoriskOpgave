@@ -17,6 +17,21 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -74,29 +89,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BusinessLogicLayer\Controller.cs" />
-    <Compile Include="DataAccessLayer\Database.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202304092159298_InitialMigration.cs" />
-    <Compile Include="Migrations\202304092159298_InitialMigration.designer.cs">
-      <DependentUpon>202304092159298_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304100853132_nulTilMangePriserPåBil.cs" />
-    <Compile Include="Migrations\202304100853132_nulTilMangePriserPåBil.designer.cs">
-      <DependentUpon>202304100853132_nulTilMangePriserPåBil.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304100907578_nulTilMangePåBrugerFraBil.cs" />
-    <Compile Include="Migrations\202304100907578_nulTilMangePåBrugerFraBil.designer.cs">
-      <DependentUpon>202304100907578_nulTilMangePåBrugerFraBil.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Model\Bil.cs" />
-    <Compile Include="Model\Bruger.cs" />
-    <Compile Include="Model\Pris.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -110,15 +108,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202304092159298_InitialMigration.resx">
-      <DependentUpon>202304092159298_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304100853132_nulTilMangePriserPåBil.resx">
-      <DependentUpon>202304100853132_nulTilMangePriserPåBil.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304100907578_nulTilMangePåBrugerFraBil.resx">
-      <DependentUpon>202304100907578_nulTilMangePåBrugerFraBil.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -132,7 +121,24 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBLogik\DBLogik.csproj">
+      <Project>{78c18db1-fe9f-4262-89ca-b200e452c776}</Project>
+      <Name>DBLogik</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

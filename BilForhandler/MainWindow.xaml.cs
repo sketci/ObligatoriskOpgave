@@ -1,7 +1,8 @@
-﻿using BilForhandler.DataAccessLayer;
-using BilForhandler.Model;
+﻿using BilForhandler;
+using DatabaseLogik.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace BilForhandler
 {
