@@ -7,8 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Opret" HorizontalAlignment="Left" Margin="422,202,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Button Content="Vis" HorizontalAlignment="Left" Margin="431,269,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
-        <ListBox x:Name="PriserListe" d:ItemsSource="{d:SampleData ItemCount=5}" Height="NaN" Margin="188,185,446,142" Width="NaN"/>
+        
+        
+        
+        <Button Content="Bil" HorizontalAlignment="Left" Margin="408,88,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
+        <Button Content="Bruger" HorizontalAlignment="Left" Margin="578,99,0,0" VerticalAlignment="Top" Click="Button_Click_3"/>
+   
     </Grid>
 </Window>

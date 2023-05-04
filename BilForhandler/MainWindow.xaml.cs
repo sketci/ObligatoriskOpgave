@@ -1,20 +1,7 @@
-﻿using BilForhandler;
-using DatabaseLogik.Model;
+﻿using DBLogik;
+using DBLogik.Model;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 
 namespace BilForhandler
@@ -30,20 +17,22 @@ namespace BilForhandler
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+      
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Pris p = new Pris("PorschePris", 100.00, true, false);
-            context.Priser.Add(p);
+            Bil b = new Bil("Porsche", "911", "2022", 2022);
+            context.Biler.Add(b);
             context.SaveChanges();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            PriserListe.Items.Clear();
-            foreach(Pris p in context.Priser)
-            {
-                PriserListe.Items.Add(p);
-            }
+            Bruger nyBruger = new Bruger("John Doe", "john.doe@example.com");
+            context.Bruger.Add(nyBruger);
+            context.SaveChanges();
         }
+
+       
     }
 }

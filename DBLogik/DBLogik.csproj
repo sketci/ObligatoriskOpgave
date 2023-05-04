@@ -54,7 +54,6 @@
     <Compile Include="DB.cs" />
     <Compile Include="Model\Bil.cs" />
     <Compile Include="Model\Bruger.cs" />
-    <Compile Include="Model\Pris.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
