@@ -45,24 +45,23 @@
             <TextBox x:Name="BilÅr" Grid.Column="1" HorizontalAlignment="Left" Margin="48,2,0,0" Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Height="20"/>
             <TextBox x:Name="BilIndkøbspris" Grid.Column="1" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="5" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="20"/>
             <TextBox x:Name="BilSalgspris" Grid.Column="1" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="6" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="20"/>
-            <Button x:Name="BilTilføjKnap" Grid.Column="1"  Content="Tilføj" HorizontalAlignment="Left" Margin="60,4,0,0" Grid.Row="7" VerticalAlignment="Top" Height="22" Width="43" Click="BilTilføjKnap_Click"/>
-            <ListBox x:Name="BilListeVisning" Grid.Row="8" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Margin="41,6,32,0" Height="113" Width="NaN" VerticalAlignment="Top"/>
+            <Button x:Name="BilTilføjKnap" Grid.Column="1"  Content="Tilføj" HorizontalAlignment="Left" Margin="85,0,0,0" Grid.Row="7" VerticalAlignment="Center" Height="22" Width="43" Click="BilTilføjKnap_Click"/>
+            <ListBox x:Name="BilListeVisning" Grid.Row="8" Grid.Column="1" Margin="41,6,32,0" Height="113" Width="NaN" VerticalAlignment="Top" SelectionChanged="BilListeVisning_SelectionChanged"/>
             <Button x:Name="BilSlet" Grid.Column="1" Content="Slet" HorizontalAlignment="Left" Margin="86,6,0,0" Grid.Row="10" VerticalAlignment="Top" Height="22" Width="43"/>
-            <Button Grid.Column="1" Content="Opdater" HorizontalAlignment="Center" Margin="0,1,0,0" Grid.Row="9" VerticalAlignment="Top" Height="22" Width="51"/>
+            <Button Grid.Column="1" Content="Opdater" HorizontalAlignment="Left" Margin="82,8,0,0" Grid.Row="9" VerticalAlignment="Top" Height="22" Width="51"/>
 
             <TextBlock Grid.Column="3" HorizontalAlignment="Left" Margin="51,34,0,0" Grid.Row="0" TextWrapping="Wrap" Text="Bruger" VerticalAlignment="Top" Height="17" Width="46" RenderTransformOrigin="0.515,-2.602"/>
             <TextBox x:Name="BrugerNavn" Grid.Column="3" HorizontalAlignment="Left" Margin="47,5,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" RenderTransformOrigin="-0.283,-0.49"/>
             <TextBox x:Name="BrugerMail" Grid.Column="3" HorizontalAlignment="Left" Margin="47,0,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="18"/>
             <Button x:Name="BrugerTilføj" Grid.Column="3"  Content="Tilføj" HorizontalAlignment="Left" Margin="82,4,0,0" Grid.Row="7" VerticalAlignment="Top" Height="22" Width="43" RenderTransformOrigin="1.359,0.65" Click="BrugerTilføj_Click"/>
-            <ListBox x:Name="BrugerListBox" Grid.Row="8" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="3" Margin="61,16,55,17" Height="NaN" Width="NaN"/>
+            <ListBox x:Name="BrugerListBox" Grid.Row="8"  Grid.Column="3" Margin="61,16,55,17" Height="NaN" Width="NaN"/>
             <Button x:Name="BrugerSletKnap" Grid.Column="3" Content="Slet" HorizontalAlignment="Center" Margin="0,5,0,0" Grid.Row="10" VerticalAlignment="Top" Height="22" Width="43"/>
             <CheckBox x:Name="BrugerBørnCheckBox" Grid.Column="3" Content="Børn" HorizontalAlignment="Left" Margin="86,0,0,0" Grid.Row="3" VerticalAlignment="Center" Height="16" Width="76"/>
             <RadioButton x:Name="BrugerMandRadio" Grid.Column="3" Content="Mand" HorizontalAlignment="Left" Margin="90,4,0,0" Grid.Row="4" VerticalAlignment="Top" Height="16" Width="52"/>
             <RadioButton x:Name="BrugerKvindeRadio" Grid.Column="3" Content="Kvinde" HorizontalAlignment="Left" Margin="15,3,0,0" Grid.Row="4" VerticalAlignment="Top" Height="16" Width="57"/>
             <RadioButton x:Name="BrugerAndetRadio" Grid.Column="3" Content="Andet" HorizontalAlignment="Left" Margin="164,4,0,0" Grid.Row="4" VerticalAlignment="Top" Height="16" Width="53"/>
-            <Button x:Name="BrugerOpdaterKnap" Grid.Column="3" Content="Opdater" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Top" Height="21" Width="52" Margin="0,1,0,0"/>
+            <Button x:Name="BrugerOpdaterKnap" Grid.Column="3" Content="Opdater" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Top" Height="21" Width="52" Margin="0,11,0,0"/>
 
-            <ListBox x:Name="Liste1" Grid.Row="8" Grid.Column="4" Margin="10,10,-156,10" SelectionMode="Extended" Width="NaN" ></ListBox>
 
             <Label  Content="Navn:" Grid.Column="0" HorizontalAlignment="Left" Margin="27,48,0,0" VerticalAlignment="Top" Height="26" Grid.RowSpan="2" Width="40"/>
             <Label  Content="Mærke:" Grid.Column="0" HorizontalAlignment="Left" Margin="18,0,0,0" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="50"/>

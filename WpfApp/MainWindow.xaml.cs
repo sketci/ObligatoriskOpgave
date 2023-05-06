@@ -1,5 +1,6 @@
 ﻿using DBLogik;
 using DBLogik.Model;
+using System.Linq;
 using System.Windows;
 
 namespace WpfApp
@@ -15,6 +16,7 @@ namespace WpfApp
         public MainWindow()
         {
             InitializeComponent();
+            BilListeVisning_SelectionChanged(null, null);
         }
 
         private string radioButtonKønValg()
@@ -55,6 +57,7 @@ namespace WpfApp
             Bil b = new Bil(BilNavn.Text, BilMærke.Text, BilModel.Text, int.Parse(BilÅr.Text), double.Parse(BilIndkøbspris.Text), double.Parse(BilSalgspris.Text));
             context.Biler.Add(b);
             context.SaveChanges();
+            BilListeVisning_SelectionChanged(null, null);
         }
 
         private void BrugerTilføj_Click(object sender, RoutedEventArgs e)
@@ -62,6 +65,13 @@ namespace WpfApp
             Bruger br = new Bruger(BrugerNavn.Text, BrugerMail.Text, radioButtonKønValg(), brugerBørnCheck());
             context.Bruger.Add(br);
             context.SaveChanges();
+        }
+
+        private void BilListeVisning_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            BilListeVisning.Items.Clear();
+            var bilerNavneOgModeller = context.Biler.Select(b => new { Navn = b.Navn, Model = b.Model }).ToList();
+            BilListeVisning.ItemsSource = bilerNavneOgModeller;
         }
     }
 }
