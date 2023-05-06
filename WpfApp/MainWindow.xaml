@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="522" Width="825">
     <DockPanel HorizontalAlignment="Right" Width="800">
-        <Grid RenderTransformOrigin="0.5,0.5">
+        <Grid RenderTransformOrigin="0.5,0.5" Height="513" Width="821">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -26,8 +26,10 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto" MinHeight="33"/>
                 <RowDefinition Height="auto" MinHeight="34" MaxHeight="150"/>
-                <RowDefinition Height="auto" MinHeight="21"/>
-                <RowDefinition Height="auto" MinHeight="35"/>
+                <RowDefinition Height="auto" MinHeight="56.88"/>
+                <RowDefinition Height="auto" MinHeight="64"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -36,38 +38,41 @@
                 <ColumnDefinition Width="auto" MinWidth="175"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" HorizontalAlignment="Left" Margin="51,34,0,0" Grid.Row="0" TextWrapping="Wrap" Text="Bil" VerticalAlignment="Top" Height="17" Width="27" RenderTransformOrigin="0.515,-2.602"/>
-            <TextBox Grid.Column="0" HorizontalAlignment="Left" Margin="49,5,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="120" Height="20" RenderTransformOrigin="-0.283,-0.49" TextChanged="TextBox_TextChanged"/>
-            <TextBox Grid.Column="0" HorizontalAlignment="Left" Margin="47,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Mærke" VerticalAlignment="Center" Width="120" Height="18"/>
-            <TextBox Grid.Column="0" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Model" VerticalAlignment="Center" Width="120" Height="18"/>
-            <TextBox Grid.Column="0" HorizontalAlignment="Left" Margin="48,2,0,0" Grid.Row="4" TextWrapping="Wrap" Text="År" VerticalAlignment="Top" Width="120" Height="20"/>
-            <TextBox Grid.Column="0" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="5" TextWrapping="Wrap" Text="Indkøbs pris" VerticalAlignment="Center" Width="120" Height="20"/>
-            <TextBox Grid.Column="0" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Salgs pris" VerticalAlignment="Center" Width="120" Height="20"/>
-            <Button Grid.Column="0"  Content="Tilføj" HorizontalAlignment="Left" Margin="60,4,0,0" Grid.Row="7" VerticalAlignment="Top" Height="22" Width="43"/>
-            <ListBox Grid.Row="8" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="0" Margin="43,12,30,0" Height="113" Width="NaN" VerticalAlignment="Top"/>
-            <Button Grid.Column="0" Content="Fjern" HorizontalAlignment="Left" Margin="61,13,0,0" Grid.Row="10" VerticalAlignment="Top" Height="22" Width="43"/>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="51,34,0,0" Grid.Row="0" TextWrapping="Wrap" Text="Bil" VerticalAlignment="Top" Height="17" Width="27" RenderTransformOrigin="0.515,-2.602"/>
+            <TextBox x:Name="BilNavn" Grid.Column="1" HorizontalAlignment="Left" Margin="49,5,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" RenderTransformOrigin="-0.283,-0.49" />
+            <TextBox x:Name="BilMærke" Grid.Column="1" HorizontalAlignment="Left" Margin="47,0,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="18"/>
+            <TextBox x:Name="BilModel" Grid.Column="1" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="3" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="18"/>
+            <TextBox x:Name="BilÅr" Grid.Column="1" HorizontalAlignment="Left" Margin="48,2,0,0" Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Height="20"/>
+            <TextBox x:Name="BilIndkøbspris" Grid.Column="1" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="5" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="20"/>
+            <TextBox x:Name="BilSalgspris" Grid.Column="1" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="6" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="20"/>
+            <Button x:Name="BilTilføjKnap" Grid.Column="1"  Content="Tilføj" HorizontalAlignment="Left" Margin="60,4,0,0" Grid.Row="7" VerticalAlignment="Top" Height="22" Width="43" Click="BilTilføjKnap_Click"/>
+            <ListBox x:Name="BilListeVisning" Grid.Row="8" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Margin="41,6,32,0" Height="113" Width="NaN" VerticalAlignment="Top"/>
+            <Button x:Name="BilSlet" Grid.Column="1" Content="Slet" HorizontalAlignment="Left" Margin="86,6,0,0" Grid.Row="10" VerticalAlignment="Top" Height="22" Width="43"/>
+            <Button Grid.Column="1" Content="Opdater" HorizontalAlignment="Center" Margin="0,1,0,0" Grid.Row="9" VerticalAlignment="Top" Height="22" Width="51"/>
 
-            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="51,34,0,0" Grid.Row="0" TextWrapping="Wrap" Text="Bruger" VerticalAlignment="Top" Height="17" Width="46" RenderTransformOrigin="0.515,-2.602"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="47,5,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="120" Height="20" RenderTransformOrigin="-0.283,-0.49" TextChanged="TextBox_TextChanged"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="47,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Mail" VerticalAlignment="Center" Width="120" Height="18"/>
-            <Button Grid.Column="1"  Content="Tilføj" HorizontalAlignment="Left" Margin="82,4,0,0" Grid.Row="7" VerticalAlignment="Top" Height="22" Width="43" RenderTransformOrigin="1.359,0.65"/>
-            <ListBox Grid.Row="8" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Margin="61,16,55,16" Height="NaN" Width="NaN"/>
-            <Button Grid.Column="1" Content="Fjern" HorizontalAlignment="Left" Margin="89,12,0,0" Grid.Row="10" VerticalAlignment="Top" Height="22" Width="43"/>
-            <CheckBox Grid.Column="1" Content="Børn" HorizontalAlignment="Left" Margin="86,0,0,0" Grid.Row="3" VerticalAlignment="Center" Height="16" Width="76"/>
+            <TextBlock Grid.Column="3" HorizontalAlignment="Left" Margin="51,34,0,0" Grid.Row="0" TextWrapping="Wrap" Text="Bruger" VerticalAlignment="Top" Height="17" Width="46" RenderTransformOrigin="0.515,-2.602"/>
+            <TextBox x:Name="BrugerNavn" Grid.Column="3" HorizontalAlignment="Left" Margin="47,5,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" RenderTransformOrigin="-0.283,-0.49"/>
+            <TextBox x:Name="BrugerMail" Grid.Column="3" HorizontalAlignment="Left" Margin="47,0,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="18"/>
+            <Button x:Name="BrugerTilføj" Grid.Column="3"  Content="Tilføj" HorizontalAlignment="Left" Margin="82,4,0,0" Grid.Row="7" VerticalAlignment="Top" Height="22" Width="43" RenderTransformOrigin="1.359,0.65" Click="BrugerTilføj_Click"/>
+            <ListBox x:Name="BrugerListBox" Grid.Row="8" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="3" Margin="61,16,55,17" Height="NaN" Width="NaN"/>
+            <Button x:Name="BrugerSletKnap" Grid.Column="3" Content="Slet" HorizontalAlignment="Center" Margin="0,5,0,0" Grid.Row="10" VerticalAlignment="Top" Height="22" Width="43"/>
+            <CheckBox x:Name="BrugerBørnCheckBox" Grid.Column="3" Content="Børn" HorizontalAlignment="Left" Margin="86,0,0,0" Grid.Row="3" VerticalAlignment="Center" Height="16" Width="76"/>
+            <RadioButton x:Name="BrugerMandRadio" Grid.Column="3" Content="Mand" HorizontalAlignment="Left" Margin="90,4,0,0" Grid.Row="4" VerticalAlignment="Top" Height="16" Width="52"/>
+            <RadioButton x:Name="BrugerKvindeRadio" Grid.Column="3" Content="Kvinde" HorizontalAlignment="Left" Margin="15,3,0,0" Grid.Row="4" VerticalAlignment="Top" Height="16" Width="57"/>
+            <RadioButton x:Name="BrugerAndetRadio" Grid.Column="3" Content="Andet" HorizontalAlignment="Left" Margin="164,4,0,0" Grid.Row="4" VerticalAlignment="Top" Height="16" Width="53"/>
+            <Button x:Name="BrugerOpdaterKnap" Grid.Column="3" Content="Opdater" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Top" Height="21" Width="52" Margin="0,1,0,0"/>
 
-            <RadioButton Grid.Column="1" Content="Mand" HorizontalAlignment="Left" Margin="90,4,0,0" Grid.Row="4" VerticalAlignment="Top" Height="16" Width="52"/>
-            <RadioButton Grid.Column="1" Content="Kvinde" HorizontalAlignment="Left" Margin="15,3,0,0" Grid.Row="4" VerticalAlignment="Top" Height="16" Width="57"/>
-            <RadioButton Grid.Column="1" Content="Andet" HorizontalAlignment="Left" Margin="164,0,0,0" Grid.Row="4" VerticalAlignment="Center" Height="16" Width="53"/>
-            <Button Content="Opdater" HorizontalAlignment="Center" Margin="0,1,0,0" Grid.RowSpan="2" Grid.Row="9" VerticalAlignment="Top" Height="22" Width="51"/>
-            <Button Grid.Column="1" Content="Opdater" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Center" Height="21" Width="52"/>
-            <RichTextBox Grid.Column="3" Grid.Row="8" TextChanged="RichTextBox_TextChanged">
-                <FlowDocument>
-                    <Paragraph>
-                        <Run Text="RichTextBox"/>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
+            <ListBox x:Name="Liste1" Grid.Row="8" Grid.Column="4" Margin="10,10,-156,10" SelectionMode="Extended" Width="NaN" ></ListBox>
 
+            <Label  Content="Navn:" Grid.Column="0" HorizontalAlignment="Left" Margin="27,48,0,0" VerticalAlignment="Top" Height="26" Grid.RowSpan="2" Width="40"/>
+            <Label  Content="Mærke:" Grid.Column="0" HorizontalAlignment="Left" Margin="18,0,0,0" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="50"/>
+            <Label  Content="Model:" Grid.Column="0" HorizontalAlignment="Left" Margin="24,0,0,0" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="47"/>
+            <Label  Content="År:" Grid.Column="0" HorizontalAlignment="Left" Margin="32,2,0,0" Grid.Row="4" VerticalAlignment="Top" Height="26" Grid.RowSpan="2" Width="25"/>
+            <Label  Content="Indkøbspris:" Grid.Column="0" HorizontalAlignment="Left" Margin="7,26,0,0" Grid.Row="4" VerticalAlignment="Top" Height="26" Grid.RowSpan="3" Width="74"/>
+            <Label  Content="Salgspris:" Grid.Column="0" HorizontalAlignment="Left" Margin="8,15,0,0" Grid.Row="5" VerticalAlignment="Top" Height="26" Grid.RowSpan="3" Width="59"/>
+
+            <Label  Content="Navn:" Grid.Column="2" HorizontalAlignment="Left" Margin="7,0,0,0" Grid.Row="1" VerticalAlignment="Center" RenderTransformOrigin="0.441,0.212" Height="26" Width="40"/>
+            <Label  Content="Mail:" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="35" Margin="10,0,0,0"/>
 
         </Grid>
     </DockPanel>

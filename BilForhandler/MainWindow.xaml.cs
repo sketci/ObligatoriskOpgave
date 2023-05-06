@@ -21,14 +21,14 @@ namespace BilForhandler
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Bil b = new Bil("Porsche", "911", "2022", 2022);
+            Bil b = new Bil("Porsche", "911", "2022", 2022, 100.00, 200.00);
             context.Biler.Add(b);
             context.SaveChanges();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            Bruger nyBruger = new Bruger("John Doe", "john.doe@example.com");
+            Bruger nyBruger = new Bruger("John Doe", "john.doe@example.com", "Mand", true);
             context.Bruger.Add(nyBruger);
             context.SaveChanges();
         }
