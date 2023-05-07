@@ -1,5 +1,6 @@
 ﻿using DBLogik;
 using DBLogik.Model;
+using System;
 using System.Linq;
 using System.Windows;
 
@@ -17,6 +18,7 @@ namespace WpfApp
         {
             InitializeComponent();
             BilListeVisning_SelectionChanged(null, null);
+            BrugerListBox_SelectionChanged(null, null);
         }
 
         private string radioButtonKønValg()
@@ -60,18 +62,102 @@ namespace WpfApp
             BilListeVisning_SelectionChanged(null, null);
         }
 
+        
+        
+        private void BilListeVisning_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            var alleBiler = context.Biler.ToList();
+            BilListeVisning.ItemsSource = alleBiler;
+        }
+        
+      
+
+        private void BilOpdater_Click(object sender, RoutedEventArgs e)
+        {
+   
+            var selectedBil = BilListeVisning.SelectedItem as Bil;
+            if (selectedBil != null)
+            {
+                var bil = context.Biler.FirstOrDefault(b => b.BilId == selectedBil.BilId);
+                bil.Navn = BilNavn.Text;
+                bil.Mærke = BilMærke.Text;
+                bil.Model = BilModel.Text;
+                bil.År = int.Parse(BilÅr.Text);
+                bil.IndKPris = double.Parse(BilIndkøbspris.Text);
+                bil.SalgsPris = double.Parse(BilSalgspris.Text);
+            }
+            context.SaveChanges();
+            BilListeVisning_SelectionChanged(null,null);
+        }
+
+        private void BilSlet_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedBil = BilListeVisning.SelectedItem as Bil;
+            if (selectedBil != null)
+            {
+                var bil = context.Biler.FirstOrDefault(b => b.BilId == selectedBil.BilId);
+                context.Biler.Remove(bil);
+                context.SaveChanges();
+            }
+
+            BilListeVisning_SelectionChanged(null, null);
+            }
+
         private void BrugerTilføj_Click(object sender, RoutedEventArgs e)
         {
             Bruger br = new Bruger(BrugerNavn.Text, BrugerMail.Text, radioButtonKønValg(), brugerBørnCheck());
             context.Bruger.Add(br);
             context.SaveChanges();
+            BrugerListBox_SelectionChanged(null, null);
         }
 
-        private void BilListeVisning_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void BrugerListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            BilListeVisning.Items.Clear();
-            var bilerNavneOgModeller = context.Biler.Select(b => new { Navn = b.Navn, Model = b.Model }).ToList();
-            BilListeVisning.ItemsSource = bilerNavneOgModeller;
+            var alleBrugere = context.Bruger.ToList();
+            BrugerListBox.ItemsSource = alleBrugere;
+        }
+       
+
+        private void BrugerOpdaterKnap_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedBruger = BrugerListBox.SelectedItem as Bruger;
+            if (selectedBruger != null)
+            {
+                var bruger = context.Bruger.FirstOrDefault(b => b.BrugerId == selectedBruger.BrugerId);
+                bruger.Navn = BrugerNavn.Text;
+                bruger.Mail = BrugerMail.Text;
+                bruger.HarBørn = brugerBørnCheck();
+                bruger.Køn = radioButtonKønValg();
+                context.SaveChanges();
+                BrugerListBox_SelectionChanged(null, null);
+            }
+
+        }
+
+        private void BrugerSletKnap_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedBruger = BrugerListBox.SelectedItem as Bruger;
+            if (selectedBruger != null)
+            {
+                var bruger = context.Bruger.FirstOrDefault(b => b.BrugerId == selectedBruger.BrugerId);
+                context.Bruger.Remove(bruger);
+                context.SaveChanges();
+            }
+        }
+
+        private void buttonBrugerId_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedBruger = BrugerListBox.SelectedItem as Bruger;
+            var selectedBil = BilListeVisning.SelectedItem as Bil;
+            if (selectedBil != null && selectedBruger != null) 
+            {
+                var bruger = context.Bruger.FirstOrDefault(b => b.BrugerId == selectedBruger.BrugerId);
+                var bil = context.Biler.FirstOrDefault(b => b.BilId == selectedBil.BilId);
+                bil.BrugerId = bruger.BrugerId;
+                context.SaveChanges();
+                BrugerListBox_SelectionChanged(null, null);
+                BilListeVisning_SelectionChanged(null, null);
+            }
         }
     }
 }

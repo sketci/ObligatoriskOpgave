@@ -11,7 +11,7 @@ namespace DBLogik.Model
         public string Køn { get; set; }
         public bool HarBørn { get; set; }
         public virtual ICollection<Bil> Biler { get; set; } // Navigation property
-        
+
         public Bruger() { }
 
         public Bruger(string navn, string mail, string køn, bool harBørn)

@@ -1,6 +1,6 @@
-﻿using System.Data.Entity;
+﻿using DBLogik.Model;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using DBLogik.Model;
 
 namespace DBLogik
 {
@@ -13,11 +13,11 @@ namespace DBLogik
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
-       
+
         public DbSet<Bruger> Bruger { get; set; }
 
         public DbSet<Bil> Biler { get; set; }
 
-        
+
     }
 }

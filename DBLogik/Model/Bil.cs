@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DBLogik.Model
@@ -33,9 +32,11 @@ namespace DBLogik.Model
             this.SalgsPris = salgsPris;
         }
 
+
         public override string ToString()
         {
-            return BilId + " " + Navn + " " + Mærke + " " + Model + " " + År + " " + IndKPris + " " + SalgsPris;
+            return $"{Navn} {Model}";
         }
+       
     }
 }

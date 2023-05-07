@@ -1,6 +1,5 @@
 ﻿using DBLogik;
 using DBLogik.Model;
-using System;
 using System.Windows;
 
 
@@ -17,7 +16,7 @@ namespace BilForhandler
             InitializeComponent();
         }
 
-      
+
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -33,7 +32,7 @@ namespace BilForhandler
             context.SaveChanges();
         }
 
-       
+
 
     }
 }
