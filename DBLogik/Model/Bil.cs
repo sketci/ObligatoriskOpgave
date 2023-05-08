@@ -37,6 +37,10 @@ namespace DBLogik.Model
         {
             return $"{Navn} {Model}";
         }
-       
+
+        public string ToStringWithAllAttributes()
+        {
+            return $"BilId: {BilId}, Navn: {Navn}, Mærke: {Mærke}, Model: {Model}, År: {År}, Indkøbspris: {IndKPris}, Salgspris: {SalgsPris}, BrugerId: {BrugerId}";
+        }
     }
 }

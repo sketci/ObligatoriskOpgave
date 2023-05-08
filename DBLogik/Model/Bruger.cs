@@ -27,5 +27,10 @@ namespace DBLogik.Model
         {
             return Navn + " " + Mail;
         }
+
+        public string ToDetailedString()
+        {
+            return $"Navn: {Navn}, Mail: {Mail}, Køn: {Køn}, HarBørn: {HarBørn}";
+        }
     }
 }

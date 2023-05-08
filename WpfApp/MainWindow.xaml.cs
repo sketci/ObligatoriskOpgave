@@ -3,6 +3,7 @@ using DBLogik.Model;
 using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Input;
 
 namespace WpfApp
 {
@@ -69,8 +70,16 @@ namespace WpfApp
             var alleBiler = context.Biler.ToList();
             BilListeVisning.ItemsSource = alleBiler;
         }
-        
-      
+
+        private void BilListeVisning_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedBil = (Bil)BilListeVisning.SelectedItem;
+            if (selectedBil != null)
+            {
+                var bil = context.Biler.FirstOrDefault(b => b.BilId == selectedBil.BilId);
+                MessageBox.Show(bil.ToStringWithAllAttributes(), "Bil detaljer");
+            }
+        }
 
         private void BilOpdater_Click(object sender, RoutedEventArgs e)
         {
@@ -116,7 +125,17 @@ namespace WpfApp
             var alleBrugere = context.Bruger.ToList();
             BrugerListBox.ItemsSource = alleBrugere;
         }
-       
+
+        private void BrugerListeVisning_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedBruger = (Bruger)BrugerListBox.SelectedItem;
+            if (selectedBruger != null)
+            {
+                var bruger = context.Bruger.FirstOrDefault(b => b.BrugerId == selectedBruger.BrugerId);
+                MessageBox.Show(bruger.ToDetailedString(), "Bruger Detaljer");
+            }
+        }
+
 
         private void BrugerOpdaterKnap_Click(object sender, RoutedEventArgs e)
         {
