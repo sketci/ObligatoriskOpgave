@@ -6,7 +6,8 @@ namespace DBLogik
 {
     public class Database : DbContext
     {
-        public Database() : base("BilForhandleren") { }
+        public Database() : base("BilForhandleren") { this.Database.Log = message => System.Diagnostics.Debug.WriteLine(message);
+                                                      }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -17,6 +18,7 @@ namespace DBLogik
         public DbSet<Bruger> Bruger { get; set; }
 
         public DbSet<Bil> Biler { get; set; }
+
 
 
     }

@@ -10,6 +10,12 @@ namespace WebAppShow
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+          name: "BilForside",
+          url: "BilForside",
+          defaults: new { controller = "Bil", action = "BilForside" }
+      );
+
+            routes.MapRoute(
             name: "Velkomst",
             url: "Velkomst",
             defaults: new { controller = "Velkomst", action = "Index" }
@@ -21,6 +27,11 @@ namespace WebAppShow
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
+            routes.MapRoute(
+                name: "CatchAll",
+                url: "{*url}",
+                defaults: new { controller = "Velkomst", action = "index" }
+            );
 
         }
     }

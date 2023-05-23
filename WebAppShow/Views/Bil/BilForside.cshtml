@@ -1,4 +1,5 @@
-﻿
+﻿@model WebAppShow.Models.BrugerBilViewModel
+
 @{
     Layout = null;
 }
@@ -11,7 +12,29 @@
     <title>BilForside</title>
 </head>
 <body>
-    <div> 
+    <div>
+        @ViewBag.Count
+
+        @Model.Biler.Count
+            @foreach (var b in Model.Biler)
+            {
+                <script>
+                    console.log("JA TAK")
+                </script>
+
+                <h1>@b.Navn</h1>
+                <p>Mærke: @b.Mærke</p>
+                <p>Model: @b.Model</p>
+                <p>År: @b.År</p>
+                <p>Indkøbspris: @b.IndKPris</p>
+                <p>Salgspris: @b.SalgsPris</p>
+                <hr />
+            }
+        
+        <script>
+            console.log("NEJ TAK")
+        </script>
+
     </div>
 </body>
 </html>
