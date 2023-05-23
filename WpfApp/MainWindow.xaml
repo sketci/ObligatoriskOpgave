@@ -38,7 +38,7 @@
                 <ColumnDefinition Width="auto" MinWidth="317"/>
 
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="51,34,0,0" Grid.Row="0" TextWrapping="Wrap" Text="Bil" VerticalAlignment="Top" Height="17" Width="27" RenderTransformOrigin="0.515,-2.602"/>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="93,30,0,0" Grid.Row="0" TextWrapping="Wrap" Text="Bil" VerticalAlignment="Top" Height="17" Width="27" RenderTransformOrigin="0.515,-2.602"/>
             <TextBox x:Name="BilNavn" Grid.Column="1" HorizontalAlignment="Left" Margin="49,5,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" RenderTransformOrigin="-0.283,-0.49" />
             <TextBox x:Name="BilMærke" Grid.Column="1" HorizontalAlignment="Left" Margin="47,0,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="18"/>
             <TextBox x:Name="BilModel" Grid.Column="1" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="3" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="18"/>

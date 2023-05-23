@@ -1,6 +1,5 @@
 ﻿using DBLogik;
 using DBLogik.Model;
-using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -63,8 +62,8 @@ namespace WpfApp
             BilListeVisning_SelectionChanged(null, null);
         }
 
-        
-        
+
+
         private void BilListeVisning_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             var alleBiler = context.Biler.ToList();
@@ -83,7 +82,7 @@ namespace WpfApp
 
         private void BilOpdater_Click(object sender, RoutedEventArgs e)
         {
-   
+
             var selectedBil = BilListeVisning.SelectedItem as Bil;
             if (selectedBil != null)
             {
@@ -96,7 +95,7 @@ namespace WpfApp
                 bil.SalgsPris = double.Parse(BilSalgspris.Text);
             }
             context.SaveChanges();
-            BilListeVisning_SelectionChanged(null,null);
+            BilListeVisning_SelectionChanged(null, null);
         }
 
         private void BilSlet_Click(object sender, RoutedEventArgs e)
@@ -110,7 +109,7 @@ namespace WpfApp
             }
 
             BilListeVisning_SelectionChanged(null, null);
-            }
+        }
 
         private void BrugerTilføj_Click(object sender, RoutedEventArgs e)
         {
@@ -168,7 +167,7 @@ namespace WpfApp
         {
             var selectedBruger = BrugerListBox.SelectedItem as Bruger;
             var selectedBil = BilListeVisning.SelectedItem as Bil;
-            if (selectedBil != null && selectedBruger != null) 
+            if (selectedBil != null && selectedBruger != null)
             {
                 var bruger = context.Bruger.FirstOrDefault(b => b.BrugerId == selectedBruger.BrugerId);
                 var bil = context.Biler.FirstOrDefault(b => b.BilId == selectedBil.BilId);
