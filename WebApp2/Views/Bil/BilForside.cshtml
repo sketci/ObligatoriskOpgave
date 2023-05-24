@@ -1,5 +1,4 @@
 ﻿@model DBLogik.Model.BrugerBilViewModel
-
 @{
     Layout = null;
 }
@@ -13,10 +12,6 @@
 </head>
 <body>
     <div>
-        <script>
-            console.log("Test Consol Log Før")
-        </script>
-
         @foreach (var b in Model.Biler)
         {
             <h1>@b.Navn</h1>
@@ -27,11 +22,8 @@
             <p>Salgspris: @b.SalgsPris</p>
             <hr />
         }
-        
-        <script>
-            console.log("Test consol log efter")
-        </script>
 
+        jeg virker
     </div>
 </body>
 </html>

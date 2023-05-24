@@ -1,43 +1,33 @@
-﻿using DBLogik;
-using DBLogik.Model;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
+using DBLogik;
+using DBLogik.Model;
 
-namespace WebAppShow.Controllers
+namespace WebApp2.Controllers
 {
     public class BilController : Controller
     {
-
+        private Database context = new Database();
+        // GET: Bil
         [HttpGet]
         public ActionResult BilForside()
         {
             BrugerBilViewModel vm = new BrugerBilViewModel();
 
-
-            using (var context = new Database())
+            using (context)
             {
-                //var context = new Database();
-
-
-                //Bil b = new Bil("VirkNu", "test", "test", 2039, 100.00, 200.00);
-                //context.Biler.Add(b);
-                //context.SaveChanges();
-
-                //var bil = context.Biler.ToList();
                 
                 var alleBiler = context.Biler.ToList();
-
+                //vm.Biler.AddRange(alleBiler);
                 vm.Biler = alleBiler;
-
-                //vm.Biler = context.Biler.ToList();
-
-                //vm.Biler[0] = context.Biler.FirstOrDefault();
-
-                ViewBag.Count = vm.Biler.Count;
 
                 var databaseName = context.Database.Connection.Database;
                 System.Diagnostics.Debug.WriteLine(databaseName);
 
+                //evt sæt return andet sted
                 return View("BilForside", vm);
             }
         }

@@ -113,6 +113,10 @@
       <Project>{78c18db1-fe9f-4262-89ca-b200e452c776}</Project>
       <Name>DBLogik</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebApp2\WebApp2.csproj">
+      <Project>{ae317d9a-adc2-44e8-98e2-32024ae25289}</Project>
+      <Name>WebApp2</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
