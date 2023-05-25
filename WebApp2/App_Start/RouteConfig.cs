@@ -17,12 +17,24 @@ namespace WebApp2
           name: "BilForside",
           url: "BilForside",
           defaults: new { controller = "Bil", action = "BilForside" }
-      );
+            );
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+          name: "BrugerForside",
+          url: "BrugerForside",
+          defaults: new { controller = "Bruger", action = "BrugerForside" }
+            );
+
+            routes.MapRoute(
+          name: "Velkmostside",
+          url: "Velkomstside",
+          defaults: new { controller = "Velkomst", action = "Velkomstside" }
+            );
+
+            routes.MapRoute(
+                name: "CatchAll",
+                url: "{*url}",
+                defaults: new { controller = "Velkomst", action = "Velkomstside" }
             );
         }
     }
