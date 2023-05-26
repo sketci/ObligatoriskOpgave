@@ -9,8 +9,19 @@
     <title>BilForside</title>
 </head>
 <body>
+    <br />
     <div>
-        @foreach (var b in Model.Biler)
+        @using (Html.BeginForm("FindBilNavn", "Bil", FormMethod.Post))
+            {
+                @Html.TextBox("navn")
+                <input type="submit" value="Find Biler"/>
+            }
+    </div>
+    <div>
+        @if (Model.Biler != null)
+        {
+
+        foreach (var b in Model.Biler)
         {
             <h1>@b.Navn</h1>
             <p>Mærke: @b.Mærke</p>
@@ -20,8 +31,11 @@
             <p>Salgspris: @b.SalgsPris</p>
             <hr />
         }
-
-        jeg virker
+        }
+        else
+            {
+                <p>Ingen biler blev fundet</p>
+            }
     </div>
 </body>
 </html>

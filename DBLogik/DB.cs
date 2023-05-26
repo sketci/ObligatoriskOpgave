@@ -7,15 +7,14 @@ namespace DBLogik
 {
     public class Database : DbContext
     {
-        public Database() : base("BilForhandleren") { this.Database.Log = message => System.Diagnostics.Debug.WriteLine(message);
-                                                      }
+        public Database() : base("BilForhandleren") {}
+
+        //this.Database.Log = message => System.Diagnostics.Debug.WriteLine(message);
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-
-        
 
         public DbSet<Bruger> Bruger { get; set; }
 

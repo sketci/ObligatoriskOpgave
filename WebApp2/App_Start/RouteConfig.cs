@@ -20,6 +20,12 @@ namespace WebApp2
             );
 
             routes.MapRoute(
+    name: "FindBilNavn",
+    url: "Bil/FindBilNavn",
+    defaults: new { controller = "Bil", action = "FindBilNavn", id = UrlParameter.Optional }
+);
+
+            routes.MapRoute(
           name: "BrugerForside",
           url: "BrugerForside",
           defaults: new { controller = "Bruger", action = "BrugerForside" }
