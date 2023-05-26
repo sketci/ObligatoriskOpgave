@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace WebApp2
@@ -14,34 +10,50 @@ namespace WebApp2
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-          name: "BilForside",
-          url: "BilForside",
-          defaults: new { controller = "Bil", action = "BilForside" }
-            );
+                name: "BilForside", url: "BilForside",
+                defaults: new { controller = "Bil", action = "BilForside" });
+
+            routes.MapRoute(name: "SorterÅr", url: "Bil/SorterAar",
+                            defaults: new
+                            {
+                                controller = "Bil",
+                                action = "SorterÅr",
+                                id = UrlParameter.Optional
+                            });
 
             routes.MapRoute(
-    name: "FindBilNavn",
-    url: "Bil/FindBilNavn",
-    defaults: new { controller = "Bil", action = "FindBilNavn", id = UrlParameter.Optional }
-);
+                name: "FindBilNavn", url: "Bil/FindBilNavn",
+                defaults: new
+                {
+                    controller = "Bil",
+                    action = "FindBilNavn",
+                    id = UrlParameter.Optional
+                });
 
             routes.MapRoute(
-          name: "BrugerForside",
-          url: "BrugerForside",
-          defaults: new { controller = "Bruger", action = "BrugerForside" }
-            );
+                name: "HentAlleBrugere", url: "Bruger/HentAlleBrugere",
+                defaults: new
+                {
+                    controller = "Brugerl",
+                    action = "HentAlleBrugere",
+                    id = UrlParameter.Optional
+                });
 
             routes.MapRoute(
-          name: "Velkmostside",
-          url: "Velkomstside",
-          defaults: new { controller = "Velkomst", action = "Velkomstside" }
-            );
+                name: "BrugerForside", url: "BrugerForside",
+                defaults: new { controller = "Bruger", action = "BrugerForside" });
 
             routes.MapRoute(
-                name: "CatchAll",
-                url: "{*url}",
-                defaults: new { controller = "Velkomst", action = "Velkomstside" }
-            );
+               name: "BrugerDetails", url: "Bruger/BrugerDetails/{id}",
+               defaults: new { controller = "Bruger", action = "BrugerDetails", id = UrlParameter.Optional });
+
+            routes.MapRoute(
+                name: "Velkmostside", url: "Velkomstside",
+                defaults: new { controller = "Velkomst", action = "Velkomstside" });
+
+            routes.MapRoute(
+                name: "CatchAll", url: "{*url}",
+                defaults: new { controller = "Velkomst", action = "Velkomstside" });
         }
     }
 }

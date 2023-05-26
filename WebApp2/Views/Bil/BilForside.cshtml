@@ -6,36 +6,51 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="Site.css">
     <title>BilForside</title>
 </head>
 <body>
     <br />
-    <div>
+    <div class="grid-container">
         @using (Html.BeginForm("FindBilNavn", "Bil", FormMethod.Post))
-            {
-                @Html.TextBox("navn")
-                <input type="submit" value="Find Biler"/>
-            }
+        {
+            @Html.TextBox("navn", "Indtast navn her", new { onfocus = "clearValue(this)" })
+            <input type="submit" value="Find Biler" />
+        }
+
+        @using (Html.BeginForm("SorterÅr", "Bil", FormMethod.Get))
+        {
+            <input type="submit" value="Sorter Biler efter År" />
+        }
+
     </div>
     <div>
         @if (Model.Biler != null)
         {
 
-        foreach (var b in Model.Biler)
-        {
-            <h1>@b.Navn</h1>
-            <p>Mærke: @b.Mærke</p>
-            <p>Model: @b.Model</p>
-            <p>År: @b.År</p>
-            <p>Indkøbspris: @b.IndKPris</p>
-            <p>Salgspris: @b.SalgsPris</p>
-            <hr />
-        }
+            foreach (var b in Model.Biler)
+            {
+                <h1>@b.Navn</h1>
+                <p>Mærke: @b.Mærke</p>
+                <p>Model: @b.Model</p>
+                <p>År: @b.År</p>
+                <p>Indkøbspris: @b.IndKPris</p>
+                <p>Salgspris: @b.SalgsPris</p>
+                <hr />
+            }
         }
         else
-            {
-                <p>Ingen biler blev fundet</p>
+        {
+            <p>Ingen biler blev fundet</p>
+        }
+
+        <script>
+            function clearValue(element) {
+                if (element.value === "Indtast navn her") {
+                    element.value = "";
+                }
             }
+        </script>
     </div>
 </body>
 </html>

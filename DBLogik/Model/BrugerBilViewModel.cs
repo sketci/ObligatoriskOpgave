@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DBLogik.Model
 {
@@ -6,5 +7,9 @@ namespace DBLogik.Model
     {
         public List<Bruger> Brugere { get; set; }
         public List<Bil> Biler { get; set; }
+
+        public Guid? SelectedBrugerId { get; set; }
+
+        public Bruger BrugerDetaljer { get; set; }
     }
 }

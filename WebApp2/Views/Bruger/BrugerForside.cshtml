@@ -1,4 +1,4 @@
-﻿
+﻿@model DBLogik.Model.BrugerBilViewModel
 <!DOCTYPE html>
 
 <html>
@@ -7,8 +7,23 @@
     <title>BrugerForside</title>
 </head>
 <body>
-    <div> 
-        brugerforside
+    <div class="grid-container">
+        <div>
+            @if (Model.Brugere != null)
+            {
+                foreach (var b in Model.Brugere)
+                {
+                    <p>@Html.ActionLink(b.Navn, "BrugerDetails", "Bruger", new { id = b.BrugerId }, null)</p>
+                }
+            }
+            else
+            {
+                <p>Ingen brugere blev fundet</p>
+            }
+        </div>
+        <div id="brugerDetails">
+            @{ Html.RenderAction("BrugerDetails", "Bruger", new { id = Model.SelectedBrugerId }); }
+        </div>
     </div>
 </body>
 </html>

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using DBLogik;
+﻿using DBLogik;
 using DBLogik.Model;
+using System;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace WebApp2.Controllers
 {
@@ -13,13 +11,15 @@ namespace WebApp2.Controllers
         private Database context = new Database();
         private BrugerBilViewModel vm = new BrugerBilViewModel();
 
+        private static bool isSortedAscending = false;
+
         [HttpGet]
         public ActionResult BilForside()
         {
             using (context)
             {
                 HentAlleBiler();
-                
+
                 return View("BilForside", vm);
             }
         }
@@ -41,6 +41,22 @@ namespace WebApp2.Controllers
             var filtreredeBiler = context.Biler.Where(b => b.Navn.Contains(navn)).ToList();
             vm.Biler = filtreredeBiler;
             //var vm = new BrugerBilViewModel { Biler = filtreredeBiler };
+            return View("BilForside", vm);
+        }
+
+        [HttpGet]
+        public ActionResult SorterÅr()
+        {
+            if (isSortedAscending)
+            {
+                vm.Biler = context.Biler.OrderByDescending(b => b.År).ToList();
+                isSortedAscending = false;
+            }
+            else
+            {
+                vm.Biler = context.Biler.OrderBy(b => b.År).ToList();
+                isSortedAscending = true;
+            }
             return View("BilForside", vm);
         }
     }
