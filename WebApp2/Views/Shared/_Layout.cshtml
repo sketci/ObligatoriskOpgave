@@ -7,6 +7,9 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-3.7.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <style>
         .header {
             background-color: #333;
@@ -24,6 +27,8 @@
                     color: yellow;
                 }
     </style>
+    
+
 </head>
 <body>
     <div class="header">
@@ -31,6 +36,8 @@
         <a href="@Url.Action("BilForside", "Bil")">Bil Forside</a>
         <a href="@Url.Action("BrugerForside", "Bruger")">Bruger Forside</a>
     </div>
+
+
 
     <div class="container">
         @RenderBody()

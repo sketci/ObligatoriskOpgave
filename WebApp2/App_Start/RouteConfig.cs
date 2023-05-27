@@ -22,11 +22,11 @@ namespace WebApp2
                             });
 
             routes.MapRoute(
-                name: "FindBilNavn", url: "Bil/FindBilNavn",
+                name: "FindBilMærke", url: "Bil/FindBilMaerke",
                 defaults: new
                 {
                     controller = "Bil",
-                    action = "FindBilNavn",
+                    action = "FindBilMærke",
                     id = UrlParameter.Optional
                 });
 

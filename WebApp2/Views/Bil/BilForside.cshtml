@@ -12,9 +12,9 @@
 <body>
     <br />
     <div class="grid-container">
-        @using (Html.BeginForm("FindBilNavn", "Bil", FormMethod.Post))
+        @using (Html.BeginForm("FindBilMærke", "Bil", FormMethod.Post))
         {
-            @Html.TextBox("navn", "Indtast navn her", new { onfocus = "clearValue(this)" })
+            @Html.TextBox("mærke", "Indtast mærke her", new { onfocus = "clearValue(this)" })
             <input type="submit" value="Find Biler" />
         }
 

@@ -36,9 +36,9 @@ namespace WebApp2.Controllers
             return bil;
         }
         [HttpPost]
-        public ActionResult FindBilNavn(String navn)
+        public ActionResult FindBilMærke(String mærke)
         {
-            var filtreredeBiler = context.Biler.Where(b => b.Navn.Contains(navn)).ToList();
+            var filtreredeBiler = context.Biler.Where(b => b.Mærke.Contains(mærke)).ToList();
             vm.Biler = filtreredeBiler;
             //var vm = new BrugerBilViewModel { Biler = filtreredeBiler };
             return View("BilForside", vm);
