@@ -11,19 +11,22 @@ namespace WebApp2.Controllers
     {
         private Database context = new Database();
         private BrugerBilViewModel vm = new BrugerBilViewModel();
-
+        
         private static bool isSortedAscending = false;
 
-        public ActionResult BrugerForside()
+        public ActionResult BrugerForside(Guid? SelectedBrugerId)
         {
-
             HentAlleBrugere();
-
+            if (SelectedBrugerId.HasValue)
+            {
+                vm.SelectedBrugerId = SelectedBrugerId.Value;
+            }
             return View("BrugerForside", vm);
         }
 
         public void HentAlleBrugere()
         {
+           
             var alleBrugere = context.Bruger.ToList();
             vm.Brugere = alleBrugere;
         }

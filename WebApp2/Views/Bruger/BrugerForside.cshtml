@@ -13,7 +13,9 @@
             {
                 foreach (var b in Model.Brugere)
                 {
-                    <p>@Html.ActionLink(b.Navn, "BrugerDetails", "Bruger", new { id = b.BrugerId }, null)</p>
+                    <p>
+                        @Html.ActionLink(b.Navn, "BrugerForside", "Bruger", new { SelectedBrugerId = b.BrugerId }, null)
+                    </p>
                 }
             }
             else
@@ -25,5 +27,6 @@
             @{ Html.RenderAction("BrugerDetails", "Bruger", new { id = Model.SelectedBrugerId }); }
         </div>
     </div>
+
 </body>
 </html>

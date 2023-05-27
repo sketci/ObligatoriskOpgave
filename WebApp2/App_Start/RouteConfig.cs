@@ -34,7 +34,7 @@ namespace WebApp2
                 name: "HentAlleBrugere", url: "Bruger/HentAlleBrugere",
                 defaults: new
                 {
-                    controller = "Brugerl",
+                    controller = "Bruger",
                     action = "HentAlleBrugere",
                     id = UrlParameter.Optional
                 });
