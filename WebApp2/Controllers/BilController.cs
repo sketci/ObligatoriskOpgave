@@ -13,6 +13,8 @@ namespace WebApp2.Controllers
 
         private static bool isSortedAscending = false;
 
+
+
         [HttpGet]
         public ActionResult BilForside()
         {
@@ -36,12 +38,33 @@ namespace WebApp2.Controllers
             return bil;
         }
         [HttpPost]
-        public ActionResult FindBilMærke(String mærke)
+        public ActionResult FindBilMærke(BrugerBilViewModel viewModel)
         {
-            var filtreredeBiler = context.Biler.Where(b => b.Mærke.Contains(mærke)).ToList();
-            vm.Biler = filtreredeBiler;
-            //var vm = new BrugerBilViewModel { Biler = filtreredeBiler };
-            return View("BilForside", vm);
+            if (ModelState.IsValid)
+            {
+                var filtreredeBiler = context.Biler.Where(b => b.Mærke.Contains(viewModel.SøgeBil.Mærke)).ToList();
+                viewModel.Biler = filtreredeBiler;
+                return View("BilForside", viewModel);
+            }
+            else
+            {
+                // Add the error checking code here
+                foreach (var modelStateVal in ViewData.ModelState.Values)
+                {
+                    foreach (var error in modelStateVal.Errors)
+                    {
+                        var errorMessage = error.ErrorMessage;
+                        var exception = error.Exception;
+                        // Log or print these values
+                        Console.WriteLine("Error: " + errorMessage);
+                        if (exception != null)
+                        {
+                            Console.WriteLine("Exception: " + exception.Message);
+                        }
+                    }
+                }
+                return View("BilForside", viewModel);
+            }
         }
 
         [HttpGet]

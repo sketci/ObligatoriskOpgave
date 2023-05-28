@@ -42,7 +42,7 @@
             <TextBox x:Name="BilNavn" Grid.Column="1" HorizontalAlignment="Left" Margin="49,5,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" RenderTransformOrigin="-0.283,-0.49" />
             <TextBox x:Name="BilMærke" Grid.Column="1" HorizontalAlignment="Left" Margin="47,0,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="18"/>
             <TextBox x:Name="BilModel" Grid.Column="1" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="3" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="18"/>
-            <TextBox x:Name="BilÅr" Grid.Column="1" HorizontalAlignment="Left" Margin="48,2,0,0" Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Height="20"/>
+            <TextBox x:Name="BilÅr"  Grid.Column="1" HorizontalAlignment="Left" Margin="48,2,0,0" Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Height="20"/>
             <TextBox x:Name="BilIndkøbspris" Grid.Column="1" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="5" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="20"/>
             <TextBox x:Name="BilSalgspris" Grid.Column="1" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="6" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="20"/>
             <Button x:Name="BilTilføjKnap" Grid.Column="1"  Content="Tilføj" HorizontalAlignment="Left" Margin="85,0,0,0" Grid.Row="7" VerticalAlignment="Center" Height="22" Width="43" Click="BilTilføjKnap_Click"/>
@@ -70,10 +70,13 @@
             <Label  Content="Indkøbspris:" Grid.Column="0" HorizontalAlignment="Left" Margin="7,26,0,0" Grid.Row="4" VerticalAlignment="Top" Height="26" Grid.RowSpan="3" Width="74"/>
             <Label  Content="Salgspris:" Grid.Column="0" HorizontalAlignment="Left" Margin="8,15,0,0" Grid.Row="5" VerticalAlignment="Top" Height="26" Grid.RowSpan="3" Width="59"/>
 
-            <Label  Content="Navn:" Grid.Column="2" HorizontalAlignment="Left" Margin="6,2,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.441,0.212" Height="26" Width="40" Grid.RowSpan="2"/>
-            <Label  Content="Mail:" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="35" Margin="10,0,0,0"/>
-            <Button x:Name="buttonBrugerId" Grid.Column="3" Content="Tilføj BrugerId" HorizontalAlignment="Left" Margin="1,43,0,0" Grid.Row="8" VerticalAlignment="Top" RenderTransformOrigin="0.571,0.409" Click="buttonBrugerId_Click"/>
+            <Label  Content="Navn:" Grid.Column="3" HorizontalAlignment="Left" Margin="67,43,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.441,0.212" Height="26" Width="40" Grid.RowSpan="2"/>
+            <Label  Content="Mail:" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="35" Margin="65,0,0,0"/>
+            <Button x:Name="buttonBrugerId" Grid.Column="2" Content="Tilføj BrugerId" HorizontalAlignment="Left" Margin="59,42,0,0" Grid.Row="8" VerticalAlignment="Top" RenderTransformOrigin="0.571,0.409" Click="buttonBrugerId_Click" Grid.ColumnSpan="2"/>
 
+            <StatusBar DockPanel.Dock="Bottom" Grid.Column="1" Grid.Row="11" Grid.ColumnSpan="2" Margin="132,5,2,19" Grid.RowSpan="2">
+                <TextBlock x:Name="StatusLabel"/>
+            </StatusBar>
         </Grid>
     </DockPanel>
 </Window>

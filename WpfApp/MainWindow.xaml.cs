@@ -1,5 +1,8 @@
 ﻿using DBLogik;
 using DBLogik.Model;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -13,12 +16,14 @@ namespace WpfApp
     {
 
         private Database context = new Database();
+        private BrugerBilViewModel vm = new BrugerBilViewModel();
 
         public MainWindow()
         {
             InitializeComponent();
             BilListeVisning_SelectionChanged(null, null);
             BrugerListBox_SelectionChanged(null, null);
+            
         }
 
         private string radioButtonKønValg()
@@ -53,15 +58,36 @@ namespace WpfApp
             };
         }
 
+        
+        /*
+        private void BilTilføjKnap_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Bil b = new Bil(BilNavn.Text, BilMærke.Text, BilModel.Text, int.Parse(BilÅr.Text),
+                    double.Parse(BilIndkøbspris.Text), double.Parse(BilSalgspris.Text));
+          
+                context.Biler.Add(b);
+                context.SaveChanges();
+                BilListeVisning_SelectionChanged(null, null);
+        }
+        */
 
         private void BilTilføjKnap_Click(object sender, RoutedEventArgs e)
         {
-            Bil b = new Bil(BilNavn.Text, BilMærke.Text, BilModel.Text, int.Parse(BilÅr.Text), double.Parse(BilIndkøbspris.Text), double.Parse(BilSalgspris.Text));
-            context.Biler.Add(b);
-            context.SaveChanges();
-            BilListeVisning_SelectionChanged(null, null);
+            if (int.TryParse(BilÅr.Text, out int år) &&
+               double.TryParse(BilIndkøbspris.Text, out double indkøbspris) &&
+               double.TryParse(BilSalgspris.Text, out double salgspris))
+            {
+                Bil b = new Bil(BilNavn.Text, BilMærke.Text, BilModel.Text, år, indkøbspris, salgspris);
+                context.Biler.Add(b);
+                context.SaveChanges();
+                BilListeVisning_SelectionChanged(null, null);
+            }
+            else
+            {
+                StatusLabel.Text = "Ugyldigt input. Prøv igen.";
+            }
         }
-
 
 
         private void BilListeVisning_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -82,20 +108,29 @@ namespace WpfApp
 
         private void BilOpdater_Click(object sender, RoutedEventArgs e)
         {
-
             var selectedBil = BilListeVisning.SelectedItem as Bil;
             if (selectedBil != null)
             {
-                var bil = context.Biler.FirstOrDefault(b => b.BilId == selectedBil.BilId);
-                bil.Navn = BilNavn.Text;
-                bil.Mærke = BilMærke.Text;
-                bil.Model = BilModel.Text;
-                bil.År = int.Parse(BilÅr.Text);
-                bil.IndKPris = double.Parse(BilIndkøbspris.Text);
-                bil.SalgsPris = double.Parse(BilSalgspris.Text);
+                if (int.TryParse(BilÅr.Text, out int år) &&
+                    double.TryParse(BilIndkøbspris.Text, out double indkøbspris) &&
+                    double.TryParse(BilSalgspris.Text, out double salgspris))
+                {
+                    var bil = context.Biler.FirstOrDefault(b => b.BilId == selectedBil.BilId);
+                    bil.Navn = BilNavn.Text;
+                    bil.Mærke = BilMærke.Text;
+                    bil.Model = BilModel.Text;
+                    bil.År = år;
+                    bil.IndKPris = indkøbspris;
+                    bil.SalgsPris = salgspris;
+
+                    context.SaveChanges();
+                    BilListeVisning_SelectionChanged(null, null);
+                }
+                else
+                {
+                    StatusLabel.Text = "Ugyldigt input. Prøv igen.";
+                }
             }
-            context.SaveChanges();
-            BilListeVisning_SelectionChanged(null, null);
         }
 
         private void BilSlet_Click(object sender, RoutedEventArgs e)
@@ -113,10 +148,19 @@ namespace WpfApp
 
         private void BrugerTilføj_Click(object sender, RoutedEventArgs e)
         {
-            Bruger br = new Bruger(BrugerNavn.Text, BrugerMail.Text, radioButtonKønValg(), brugerBørnCheck());
-            context.Bruger.Add(br);
-            context.SaveChanges();
-            BrugerListBox_SelectionChanged(null, null);
+            if (!string.IsNullOrWhiteSpace(BrugerNavn.Text) &&
+               !string.IsNullOrWhiteSpace(BrugerMail.Text) &&
+               radioButtonKønValg() != null)
+            {
+                Bruger br = new Bruger(BrugerNavn.Text, BrugerMail.Text, radioButtonKønValg(), brugerBørnCheck());
+                context.Bruger.Add(br);
+                context.SaveChanges();
+                BrugerListBox_SelectionChanged(null, null);
+            }
+            else
+            {
+                StatusLabel.Text = "Ugyldigt input. Prøv igen.";
+            }
         }
 
         private void BrugerListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -141,15 +185,23 @@ namespace WpfApp
             var selectedBruger = BrugerListBox.SelectedItem as Bruger;
             if (selectedBruger != null)
             {
-                var bruger = context.Bruger.FirstOrDefault(b => b.BrugerId == selectedBruger.BrugerId);
-                bruger.Navn = BrugerNavn.Text;
-                bruger.Mail = BrugerMail.Text;
-                bruger.HarBørn = brugerBørnCheck();
-                bruger.Køn = radioButtonKønValg();
-                context.SaveChanges();
-                BrugerListBox_SelectionChanged(null, null);
+                if (!string.IsNullOrWhiteSpace(BrugerNavn.Text) &&
+                    !string.IsNullOrWhiteSpace(BrugerMail.Text) &&
+                    radioButtonKønValg() != null)
+                {
+                    var bruger = context.Bruger.FirstOrDefault(b => b.BrugerId == selectedBruger.BrugerId);
+                    bruger.Navn = BrugerNavn.Text;
+                    bruger.Mail = BrugerMail.Text;
+                    bruger.HarBørn = brugerBørnCheck();
+                    bruger.Køn = radioButtonKønValg();
+                    context.SaveChanges();
+                    BrugerListBox_SelectionChanged(null, null);
+                }
+                else
+                {
+                    StatusLabel.Text = "Ugyldigt input. Prøv igen.";
+                }
             }
-
         }
 
         private void BrugerSletKnap_Click(object sender, RoutedEventArgs e)

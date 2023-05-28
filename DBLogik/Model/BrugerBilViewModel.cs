@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DBLogik.Model
 {
@@ -11,5 +12,7 @@ namespace DBLogik.Model
         public Guid? SelectedBrugerId { get; set; }
 
         public Bruger BrugerDetaljer { get; set; }
+
+        public SøgBilViewModel SøgeBil { get; set; }
     }
 }

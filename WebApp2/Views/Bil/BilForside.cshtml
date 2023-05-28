@@ -1,6 +1,5 @@
 ﻿@model DBLogik.Model.BrugerBilViewModel
 
-
 <!DOCTYPE html>
 
 <html>
@@ -14,7 +13,9 @@
     <div class="grid-container">
         @using (Html.BeginForm("FindBilMærke", "Bil", FormMethod.Post))
         {
-            @Html.TextBox("mærke", "Indtast mærke her", new { onfocus = "clearValue(this)" })
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            @Html.EditorFor(m => m.SøgeBil.Mærke, new { htmlAttributes = new { @class = "form-control", onfocus = "clearValue(this)", placeholder = "Indtast mærke her" } })
+            @Html.ValidationMessageFor(m => m.SøgeBil.Mærke, "", new { @class = "text-danger" })
             <input type="submit" value="Find Biler" />
         }
 
@@ -54,3 +55,7 @@
     </div>
 </body>
 </html>
+
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
