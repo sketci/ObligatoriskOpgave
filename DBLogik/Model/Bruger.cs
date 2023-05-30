@@ -22,7 +22,8 @@ namespace DBLogik.Model
         public string Mail { get; set; }
 
         [Display(Name = "Vælg Køn")]
-        [RegularExpression("(Mand|Kvinde|Andet)", ErrorMessage = "Vælg venligst et køn.")]
+        [RegularExpression("(Mand|Kvinde|Andet)",
+            ErrorMessage = "Vælg venligst et køn.")]
         public string Køn { get; set; }
         public bool HarBørn { get; set; }
         public virtual ICollection<Bil> Biler { get; set; } // Navigation property
