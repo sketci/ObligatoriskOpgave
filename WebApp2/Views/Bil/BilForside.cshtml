@@ -13,6 +13,7 @@
     <div class="grid-container">
         @using (Html.BeginForm("FindBilMærke", "Bil", FormMethod.Post))
         {
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
             @Html.EditorFor(m => m.SøgeBil.Mærke, new { htmlAttributes = new { @class = "form-control", onfocus = "clearValue(this)", placeholder = "Indtast mærke her" } })
             @Html.ValidationMessageFor(m => m.SøgeBil.Mærke, "", new { @class = "text-danger" })
             <input type="submit" value="Find Biler" />

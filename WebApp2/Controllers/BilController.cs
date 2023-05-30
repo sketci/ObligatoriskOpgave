@@ -48,14 +48,14 @@ namespace WebApp2.Controllers
             }
             else
             {
-                
+                // Add the error checking code here
                 foreach (var modelStateVal in ViewData.ModelState.Values)
                 {
                     foreach (var error in modelStateVal.Errors)
                     {
                         var errorMessage = error.ErrorMessage;
                         var exception = error.Exception;
-                     
+                        // Log or print these values
                         Console.WriteLine("Error: " + errorMessage);
                         if (exception != null)
                         {
