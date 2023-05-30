@@ -1,11 +1,15 @@
 ﻿using DBLogik;
 using DBLogik.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using static DBLogik.DTO.RandomUserDTO;
 
 namespace WpfApp
 {
@@ -23,6 +27,7 @@ namespace WpfApp
             InitializeComponent();
             BilListeVisning_SelectionChanged(null, null);
             BrugerListBox_SelectionChanged(null, null);
+            _ = GetRandomUser();
             
         }
 
@@ -228,6 +233,57 @@ namespace WpfApp
                 BrugerListBox_SelectionChanged(null, null);
                 BilListeVisning_SelectionChanged(null, null);
             }
+        }
+
+        public async Task<string> GetRandomUser()
+        {
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    var response = await client.GetAsync("https://randomuser.me/api/?results=1");
+                    response.EnsureSuccessStatusCode();
+                    var jsonResult = await response.Content.ReadAsStringAsync();
+                    var data = JsonConvert.DeserializeObject<Root>(jsonResult);
+
+                    foreach (var result in data.results)
+                    {
+                        string navn = result.name.first + " " + result.name.last;
+                        string mail = result.email;
+                        string køn = "";
+
+                        if (result.gender == "male")
+                        {
+                            køn = "Mand";
+                            BrugerMandRadio.IsChecked = true;
+                        }
+                        else if (result.gender == "female")
+                        {
+                            køn = "Kvinde";
+                            BrugerKvindeRadio.IsChecked = true;
+                        }
+                        else
+                        {
+                            køn = "Andet";
+                            BrugerAndetRadio.IsChecked = true;
+                        }
+
+                        BrugerNavn.Text = navn;
+                        BrugerMail.Text = mail;
+                    }
+                    return jsonResult;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred while calling the randomuser API: {ex.Message}");
+                    return null;
+                }
+            }
+        }
+
+        private void BrugerTilføjRandom_Click(object sender, RoutedEventArgs e)
+        {
+            _ = GetRandomUser();
         }
     }
 }

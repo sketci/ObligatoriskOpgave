@@ -55,6 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB.cs" />
+    <Compile Include="DTO\BilDTO.cs" />
+    <Compile Include="DTO\BrugerDTO.cs" />
+    <Compile Include="DTO\RandomUserDTO.cs" />
+    <Compile Include="Mappers\Mappers.cs" />
     <Compile Include="Model\Bil.cs" />
     <Compile Include="Model\Bruger.cs" />
     <Compile Include="Model\BrugerBilViewModel.cs" />

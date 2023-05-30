@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace DBLogik.Model
 {
@@ -27,7 +28,7 @@ namespace DBLogik.Model
         public bool HarBørn { get; set; }
         public virtual ICollection<Bil> Biler { get; set; } // Navigation property
 
-        public bool HasErrors => throw new NotImplementedException();
+      
 
         public Bruger() { }
 
@@ -40,7 +41,7 @@ namespace DBLogik.Model
             this.HarBørn = harBørn;
         }
 
-        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+       
 
         public override string ToString()
         {
@@ -52,9 +53,25 @@ namespace DBLogik.Model
             return $"Navn: {Navn}, Mail: {Mail}, Køn: {Køn}, HarBørn: {HarBørn}";
         }
 
+        private Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
+
+        public bool HasErrors
+        {
+            get { return _errors.Any(); }
+        }
+
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+
         public IEnumerable GetErrors(string propertyName)
         {
-            throw new NotImplementedException();
+            if (_errors.ContainsKey(propertyName))
+                return _errors[propertyName];
+            return null;
+        }
+
+        protected virtual void OnErrorsChanged(string propertyName)
+        {
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
     }
 }
