@@ -45,7 +45,7 @@
             <TextBox x:Name="BilÅr"  Grid.Column="1" HorizontalAlignment="Left" Margin="48,2,0,0" Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Height="20"/>
             <TextBox x:Name="BilIndkøbspris" Grid.Column="1" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="5" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="20"/>
             <TextBox x:Name="BilSalgspris" Grid.Column="1" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="6" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="20"/>
-            <Button x:Name="BilTilføjKnap" Grid.Column="1"  Content="Tilføj" HorizontalAlignment="Left" Margin="85,0,0,0" Grid.Row="7" VerticalAlignment="Center" Height="22" Width="43" Click="BilTilføjKnap_Click"/>
+            <Button x:Name="BilTilføjKnap" Grid.Column="1"  Content="Tilføj" HorizontalAlignment="Left" Margin="85,5,0,6" Grid.Row="7" Width="43" Click="BilTilføjKnap_Click"/>
             <ListBox x:Name="BilListeVisning" Grid.Row="8" Grid.Column="1" Margin="41,6,29,0" Height="110" Width="NaN" VerticalAlignment="Top" SelectionMode="Single" SelectionChanged="BilListeVisning_SelectionChanged" MouseDoubleClick="BilListeVisning_MouseDoubleClick" />
             <Button x:Name="BilSlet" Grid.Column="1" Content="Slet" HorizontalAlignment="Left" Margin="86,6,0,0" Grid.Row="10" VerticalAlignment="Top" Height="22" Width="43" Click="BilSlet_Click"/>
             <Button x:Name="BilOpdater" Grid.Column="1" Content="Opdater" HorizontalAlignment="Left" Margin="82,0,0,0" Grid.Row="9" VerticalAlignment="Center" Height="22" Width="51" Click="BilOpdater_Click"/>

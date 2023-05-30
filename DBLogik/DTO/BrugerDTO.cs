@@ -19,5 +19,28 @@ namespace DBLogik.DTO
         public bool HarBørn { get; set; }
 
         public ICollection<String> BilerID { get; set; }
+
+        public override string ToString()
+        {
+            var builder = new StringBuilder();
+
+            builder.AppendLine($"BrugerID: {BrugerId}");
+            builder.AppendLine($"Navn: {Navn}");
+            builder.AppendLine($"Mail: {Mail}");
+            builder.AppendLine($"Køn: {Køn}");
+            builder.AppendLine($"Har børn: {HarBørn}");
+
+            if (BilerID != null)
+            {
+                builder.AppendLine("BilerID:");
+
+                foreach (var bilId in BilerID)
+                {
+                    builder.AppendLine($"\t{bilId}");
+                }
+            }
+
+            return builder.ToString();
+        }
     }
 }

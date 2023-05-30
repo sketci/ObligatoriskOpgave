@@ -250,21 +250,20 @@ namespace WpfApp
                     {
                         string navn = result.name.first + " " + result.name.last;
                         string mail = result.email;
-                        string køn = "";
-
+                        
                         if (result.gender == "male")
                         {
-                            køn = "Mand";
+                         
                             BrugerMandRadio.IsChecked = true;
                         }
                         else if (result.gender == "female")
                         {
-                            køn = "Kvinde";
+                  
                             BrugerKvindeRadio.IsChecked = true;
                         }
                         else
                         {
-                            køn = "Andet";
+                           
                             BrugerAndetRadio.IsChecked = true;
                         }
 

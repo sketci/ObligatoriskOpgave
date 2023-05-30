@@ -1,0 +1,15 @@
+﻿<Window x:Class="WPFAPITest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFAPITest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="button" Content="Hent Bruger" HorizontalAlignment="Left" Margin="102,74,0,0" VerticalAlignment="Top" Click="button_Click"/>
+        <ListBox x:Name="listBoxVisBrugere" Height="NaN" Margin="96,153,604,86" Width="NaN"/>
+        <TextBox x:Name="textBoxMail" HorizontalAlignment="Left" Margin="86,113,0,0" TextWrapping="Wrap" Text="Indtast mail" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

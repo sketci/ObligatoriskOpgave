@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp2", "WebApp2\WebApp2.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{96F3E7DE-8F79-4654-A13B-ACFC23341334}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFAPITest2", "WPFAPITest2\WPFAPITest2.csproj", "{502CE5F3-E35F-4814-B9D2-0FECE8009469}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{96F3E7DE-8F79-4654-A13B-ACFC23341334}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96F3E7DE-8F79-4654-A13B-ACFC23341334}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96F3E7DE-8F79-4654-A13B-ACFC23341334}.Release|Any CPU.Build.0 = Release|Any CPU
+		{502CE5F3-E35F-4814-B9D2-0FECE8009469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{502CE5F3-E35F-4814-B9D2-0FECE8009469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{502CE5F3-E35F-4814-B9D2-0FECE8009469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{502CE5F3-E35F-4814-B9D2-0FECE8009469}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

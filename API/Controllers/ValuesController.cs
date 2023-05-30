@@ -20,12 +20,12 @@ namespace API.Controllers
 
         // GET api/values/5
         [HttpGet]
-        public BrugerDTO Get(string navn)
+        public BrugerDTO Get(string mail)
         {
             using (var context = new Database())
             {
-                var bruger = context.Bruger.Include("Biler").FirstOrDefault(b => b.Mail == navn);
-                var brugerDTO = Mappers.MapToDTO(bruger); // brug mapperen til at konvertere til DTO
+                var bruger = context.Bruger.Include("Biler").FirstOrDefault(b => b.Mail == mail);
+                var brugerDTO = Mappers.MapToDTO(bruger);
                 return brugerDTO;
             }
         }
