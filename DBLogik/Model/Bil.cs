@@ -64,7 +64,6 @@ namespace DBLogik.Model
 
         public IEnumerable GetErrors(string propertyName)
         {
-            // return a collection of error messages
             return new List<string>();
         }
 

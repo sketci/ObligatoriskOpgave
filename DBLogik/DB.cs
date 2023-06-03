@@ -9,7 +9,6 @@ namespace DBLogik
     {
         public Database() : base("BilForhandleren") {}
 
-        //this.Database.Log = message => System.Diagnostics.Debug.WriteLine(message);
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

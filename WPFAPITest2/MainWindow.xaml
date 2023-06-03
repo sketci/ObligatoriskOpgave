@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="button" Content="Hent bruger" HorizontalAlignment="Left" Margin="113,116,0,0" VerticalAlignment="Top" Click="button_Click"/>
-        <TextBox x:Name="textBoxMail" HorizontalAlignment="Left" Margin="87,156,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button" Content="Hent bruger" HorizontalAlignment="Left" Margin="113,114,0,0" VerticalAlignment="Top" Click="button_Click"/>
+        <TextBox x:Name="textBoxMail" HorizontalAlignment="Left" Margin="87,156,0,0" TextWrapping="Wrap" Text="Indsæt mail" VerticalAlignment="Top" Width="120"/>
         <ListBox x:Name="listBoxBrugere"  Height="NaN" Margin="82,217,588,43" Width="NaN"/>
 
     </Grid>

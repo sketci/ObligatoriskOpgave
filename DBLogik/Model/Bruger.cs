@@ -26,7 +26,7 @@ namespace DBLogik.Model
         [RegularExpression("(Mand|Kvinde|Andet)", ErrorMessage = "Vælg venligst et køn.")]
         public string Køn { get; set; }
         public bool HarBørn { get; set; }
-        public virtual ICollection<Bil> Biler { get; set; } // Navigation property
+        public virtual ICollection<Bil> Biler { get; set; }
 
       
 

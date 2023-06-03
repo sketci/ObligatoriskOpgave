@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.Remoting.Contexts;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -28,7 +29,8 @@ namespace WpfApp
             BilListeVisning_SelectionChanged(null, null);
             BrugerListBox_SelectionChanged(null, null);
             _ = GetRandomUser();
-            
+            InitializeBrugere();
+            InitializeBiler();
         }
 
         private string radioButtonKønValg()
@@ -63,19 +65,6 @@ namespace WpfApp
             };
         }
 
-        
-        /*
-        private void BilTilføjKnap_Click(object sender, RoutedEventArgs e)
-        {
-            
-            Bil b = new Bil(BilNavn.Text, BilMærke.Text, BilModel.Text, int.Parse(BilÅr.Text),
-                    double.Parse(BilIndkøbspris.Text), double.Parse(BilSalgspris.Text));
-          
-                context.Biler.Add(b);
-                context.SaveChanges();
-                BilListeVisning_SelectionChanged(null, null);
-        }
-        */
 
         private void BilTilføjKnap_Click(object sender, RoutedEventArgs e)
         {
@@ -157,16 +146,28 @@ namespace WpfApp
                !string.IsNullOrWhiteSpace(BrugerMail.Text) &&
                radioButtonKønValg() != null)
             {
-                Bruger br = new Bruger(BrugerNavn.Text, BrugerMail.Text, radioButtonKønValg(), brugerBørnCheck());
-                context.Bruger.Add(br);
-                context.SaveChanges();
-                BrugerListBox_SelectionChanged(null, null);
+                
+                var existingUser = context.Bruger.FirstOrDefault(u => u.Mail == BrugerMail.Text);
+
+                
+                if (existingUser == null)
+                {
+                    Bruger br = new Bruger(BrugerNavn.Text, BrugerMail.Text, radioButtonKønValg(), brugerBørnCheck());
+                    context.Bruger.Add(br);
+                    context.SaveChanges();
+                    BrugerListBox_SelectionChanged(null, null);
+                }
+                else
+                {
+                    StatusLabel.Text = "En bruger med denne mail eksisterer allerede.";
+                }
             }
             else
             {
                 StatusLabel.Text = "Ugyldigt input. Prøv igen.";
             }
         }
+
 
         private void BrugerListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
@@ -250,20 +251,20 @@ namespace WpfApp
                     {
                         string navn = result.name.first + " " + result.name.last;
                         string mail = result.email;
-                        
+
                         if (result.gender == "male")
                         {
-                         
+
                             BrugerMandRadio.IsChecked = true;
                         }
                         else if (result.gender == "female")
                         {
-                  
+
                             BrugerKvindeRadio.IsChecked = true;
                         }
                         else
                         {
-                           
+
                             BrugerAndetRadio.IsChecked = true;
                         }
 
@@ -283,6 +284,73 @@ namespace WpfApp
         private void BrugerTilføjRandom_Click(object sender, RoutedEventArgs e)
         {
             _ = GetRandomUser();
+        }
+
+        private void InitializeBrugere()
+        {
+            var random = new Random();
+
+            var navne = new List<string> { "Anders", "Bente", "Christian", "Dorte", "Erik", "Frida", "Gustav", "Hanne", "Ivan", "Johanne" };
+            var køn = new List<string> { "Mand", "Kvinde", "Andet" };
+
+            for (int i = 0; i < 10; i++)
+            {
+                var navn = navne[random.Next(navne.Count)];
+                var email = $"{navn.ToLower()}{random.Next(100, 999)}@mail.com";
+
+                var bruger = new Bruger
+                {
+                    BrugerId = Guid.NewGuid(),
+                    Navn = navn,
+                    Mail = email,
+                    Køn = køn[random.Next(køn.Count)],
+                    HarBørn = random.Next(2) == 0
+                };
+
+                context.Bruger.Add(bruger);
+            }
+
+            context.SaveChanges();
+        }
+
+
+        private void InitializeBiler()
+        {
+            var random = new Random();
+
+            var navne = new List<string> { "The Bullet", "Road Warrior", "Sleek Drive", "Turbo", "Rally Racer", "The Cruiser", "Skyliner", "Twister", "Mystery", "Trailblazer" };
+            var mærker = new List<string> { "Toyota", "Ford", "Chevrolet", "Mercedes Benz", "BMW", "Audi", "Nissan", "Hyundai", "Volkswagen", "Porsche" };
+            var modeller = new List<string> { "Corolla", "F150", "Impala", "CClass", "3 Series", "A4", "Altima", "Elantra", "Golf", "911" };
+
+            for (int i = 0; i < 10; i++)
+            {
+                var bil = new Bil
+                {
+                    BilId = Guid.NewGuid(),
+                    Navn = navne[random.Next(navne.Count)],
+                    Mærke = mærker[random.Next(mærker.Count)],
+                    Model = modeller[random.Next(modeller.Count)],
+                    År = random.Next(1886, 2099),
+                    IndKPris = random.Next(20000, 500000),
+                    SalgsPris = random.Next(600000, 1000000)
+                };
+
+                // Valider bilen
+                var error = bil.Validate();
+                if (error == null)
+                {
+                    // Hvis der ikke er nogen fejl, tilføj bilen til konteksten
+                    context.Biler.Add(bil);
+                }
+                else
+                {
+                    // Hvis der er en fejl, håndter den (f.eks. log fejlen, stop eksekveringen, osv.)
+                    Console.WriteLine($"Fejl ved oprettelse af bil: {error}");
+                    StatusLabel.Text = "Ugyldigt input. Prøv igen.";
+                    return;
+                }
+            }
+            context.SaveChanges();
         }
     }
 }

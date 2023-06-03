@@ -37,7 +37,6 @@ namespace WPFAPITest2
 
 
                     listBoxBrugere.ItemsSource = new List<BrugerDTO> { data };
-
                 }
                 catch (Exception ex)
                 {

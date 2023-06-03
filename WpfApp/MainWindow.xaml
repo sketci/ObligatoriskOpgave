@@ -39,7 +39,7 @@
 
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="93,30,0,0" Grid.Row="0" TextWrapping="Wrap" Text="Bil" VerticalAlignment="Top" Height="17" Width="27" RenderTransformOrigin="0.515,-2.602"/>
-            <TextBox x:Name="BilNavn" Grid.Column="1" HorizontalAlignment="Left" Margin="49,5,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" RenderTransformOrigin="-0.283,-0.49" />
+            <TextBox x:Name="BilNavn"  Grid.Column="1" HorizontalAlignment="Left" Margin="49,5,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" RenderTransformOrigin="-0.283,-0.49" />
             <TextBox x:Name="BilMærke" Grid.Column="1" HorizontalAlignment="Left" Margin="47,0,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="18"/>
             <TextBox x:Name="BilModel" Grid.Column="1" HorizontalAlignment="Left" Margin="48,0,0,0" Grid.Row="3" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Height="18"/>
             <TextBox x:Name="BilÅr"  Grid.Column="1" HorizontalAlignment="Left" Margin="48,2,0,0" Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Height="20"/>
@@ -77,8 +77,10 @@
             <Label  Content="Mail:" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="35" Margin="65,0,0,0"/>
             <Button x:Name="buttonBrugerId" Grid.Column="2" Content="Tilføj BrugerId" HorizontalAlignment="Left" Margin="59,42,0,0" Grid.Row="8" VerticalAlignment="Top" RenderTransformOrigin="0.571,0.409" Click="buttonBrugerId_Click" Height="20" Width="79"/>
 
-            <StatusBar DockPanel.Dock="Bottom" Grid.Column="1" Grid.Row="11" Grid.ColumnSpan="2" Margin="132,5,2,19" Grid.RowSpan="2">
-                <TextBlock x:Name="StatusLabel"/>
+            <StatusBar DockPanel.Dock="Bottom" Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="3" Margin="202,31,209,44" Grid.RowSpan="2">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <TextBlock x:Name="StatusLabel" TextWrapping="Wrap" Text="Fejlmeddelelser" />
+                </ScrollViewer>
             </StatusBar>
         </Grid>
     </DockPanel>
