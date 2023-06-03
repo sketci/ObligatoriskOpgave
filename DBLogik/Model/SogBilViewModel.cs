@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace DBLogik.Model
 {
-    public class SøgBilViewModel
+    public class SogBilViewModel
     {
         [Display(Name = "Mærke")]
         [Required(ErrorMessage = "Mærke er nødvendigt.")]

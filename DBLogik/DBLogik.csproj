@@ -62,7 +62,7 @@
     <Compile Include="Model\Bil.cs" />
     <Compile Include="Model\Bruger.cs" />
     <Compile Include="Model\BrugerBilViewModel.cs" />
-    <Compile Include="Model\SøgBilViewModel.cs" />
+    <Compile Include="Model\SogBilViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

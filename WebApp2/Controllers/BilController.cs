@@ -42,7 +42,7 @@ namespace WebApp2.Controllers
         {
             if (ModelState.IsValid)
             {
-                var filtreredeBiler = context.Biler.Where(b => b.Mærke.Contains(viewModel.SøgeBil.Mærke)).ToList();
+                var filtreredeBiler = context.Biler.Where(b => b.Mærke.Contains(viewModel.SogeBil.Mærke)).ToList();
                 viewModel.Biler = filtreredeBiler;
                 return View("BilForside", viewModel);
             }

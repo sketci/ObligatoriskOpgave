@@ -13,6 +13,6 @@ namespace DBLogik.Model
 
         public Bruger BrugerDetaljer { get; set; }
 
-        public SøgBilViewModel SøgeBil { get; set; }
+        public SogBilViewModel SogeBil { get; set; }
     }
 }

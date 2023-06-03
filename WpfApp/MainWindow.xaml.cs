@@ -26,11 +26,12 @@ namespace WpfApp
         public MainWindow()
         {
             InitializeComponent();
+            InitializeBrugere();
+            InitializeBiler();
             BilListeVisning_SelectionChanged(null, null);
             BrugerListBox_SelectionChanged(null, null);
             _ = GetRandomUser();
-            InitializeBrugere();
-            InitializeBiler();
+            
         }
 
         private string radioButtonKønValg()
@@ -335,16 +336,13 @@ namespace WpfApp
                     SalgsPris = random.Next(600000, 1000000)
                 };
 
-                // Valider bilen
                 var error = bil.Validate();
                 if (error == null)
                 {
-                    // Hvis der ikke er nogen fejl, tilføj bilen til konteksten
                     context.Biler.Add(bil);
                 }
                 else
                 {
-                    // Hvis der er en fejl, håndter den (f.eks. log fejlen, stop eksekveringen, osv.)
                     Console.WriteLine($"Fejl ved oprettelse af bil: {error}");
                     StatusLabel.Text = "Ugyldigt input. Prøv igen.";
                     return;
